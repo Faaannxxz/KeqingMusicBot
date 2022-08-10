@@ -55,7 +55,7 @@ async def start_comm(client, message: Message, _):
             return await message.reply_text(_["song_2"])
         if name[0:3] == "sta":
             m = await message.reply_text(
-                "🔎 Fetching your personal stats.!"
+                "🔎 Menunggu Informasi...!"
             )
             stats = await get_userss(message.from_user.id)
             tot = len(stats)
@@ -147,26 +147,26 @@ async def start_comm(client, message: Message, _):
                 link = result["link"]
                 published = result["publishedTime"]
             searched_text = f"""
-🔍__**Video Track Information**__
+🔍__**INFORMASI LAGU**__
 
-❇️**Title:** {title}
+❇️**JUDUL:** {title}
 
-⏳**Duration:** {duration} Mins
-👀**Views:** `{views}`
-⏰**Published Time:** {published}
-🎥**Channel Name:** {channel}
-📎**Channel Link:** [Visit From Here]({channellink})
-🔗**Video Link:** [Link]({link})
+⏳**DURASI:** {duration} MENIT
+👀**VIEWS:** `{views}`
+⏰**TGL UPLOAD:** {published}
+🎥**NAMA CHANNEL:** {channel}
+📎**TAUTAN:** [Visit From Here]({channellink})
+🔗**BUKA DI YT:** [Link]({link})
 
 ⚡️ __Searched Powered By {config.MUSIC_BOT_NAME}__"""
             key = InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(
-                            text="🎥 Watch ", url=f"{link}"
+                            text="🎥 TONTON ", url=f"{link}"
                         ),
                         InlineKeyboardButton(
-                            text="🔄 Close", callback_data="close"
+                            text="🔄 TUTUP", callback_data="close"
                         ),
                     ],
                 ]
@@ -197,7 +197,7 @@ async def start_comm(client, message: Message, _):
             try:
                 await message.reply_photo(
                     photo=config.START_IMG_URL,
-                    caption=_["start_2"].format(
+                    caption=_["start"].format(
                         config.MUSIC_BOT_NAME
                     ),
                     reply_markup=InlineKeyboardMarkup(out),
@@ -231,7 +231,7 @@ async def start_comm(client, message: Message, _):
 async def testbot(client, message: Message, _):
     out = start_pannel(_)
     return await message.reply_text(
-        _["start_1"].format(
+        _["start"].format(
             message.chat.title, config.MUSIC_BOT_NAME
         ),
         reply_markup=InlineKeyboardMarkup(out),
